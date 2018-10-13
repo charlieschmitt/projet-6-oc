@@ -10,6 +10,7 @@ class Player extends Element {
         this.currentWeapon = currentWeapon
         this.strength = strength
         this.equipment = equipment
+        this.moveOK = { up : new Array(), down : new Array(), right : new Array(), left : new Array() }
     }
 
 }
