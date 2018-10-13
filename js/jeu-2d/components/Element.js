@@ -8,11 +8,11 @@ class Element {
         this.name = name
         this.classElt = classElt
         this.pos = { x : 0, y : 0 }
-        this.randomCoordinates(8)
+        this.randomCoordinates()
     }
     
     // Coordonnées x-y aléatoires
-    randomCoordinates(max) {
+    randomCoordinates(max = 8) {
         this.pos.x = Math.floor(Math.random() * max) + 1, this.pos.y = Math.floor(Math.random() * max) + 1
         this.eltPos = this.pos.x + '-' + this.pos.y
         this.eltPosID = document.getElementById((this.pos.x) + '-' + (this.pos.y))
