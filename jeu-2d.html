@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>MARS ATTACKS 2 !</title>
+    <link rel="stylesheet" href="skin/knacss/css/knacss.css" media="all">
+</head>
+
+<body>
+    
+    <header role="banner">
+        <h1 id="logo">
+            <a href="index.html"><img alt="Le logo du jeu" src="pictures/logo-mars-attacks.png" /></a>
+        </h1>
+    </header>
+    
+    <main id="page-game--2d" role="main">
+        
+        <div class="rules-page--content">
+            <h2>Règles du jeu</h2>
+            <ul class="rules">
+                <li>Deux joueurs sont positionnés sur une carte. Ils peuvent se déplacer de une à trois cases.</li>
+                <li>Une fois le déplacement fini, le joueur suivant joue et ainsi de suite.</li>
+                <li>Quand les joueurs se rencontrent, un combat s'enclenche !</li>
+                <li>Le joueur peut soit attaquer ou défendre. S'il choisit de défendre, il encaissera 50% de dégâts en moins qu'en temps normal !</li>
+                <li>Lorsque la vie d'un des deux joueurs tombent à 0, le joueur a perdu.</li>
+            </ul>
+            <a id="end-rules-game">Retourner au jeu</a>
+        </div>
+        
+        <aside id="information-game--2d" role="note">
+            <div class="bloc-sky--blue">
+                <a id="rules-game"></a>
+            </div>
+            <div class="bloc-blue"></div>
+            <div class="bloc-dark--blue"></div>
+        </aside>
+        
+        <section id="game-2d">
+            <div id="container">
+            </div>
+            <div class="bloc-dark--orange">
+                <div id="players-fight">
+                    <button type="button" id="attack">Attaquer</button>
+                    <img src="">
+                    <button type="button" id="defend">Défendre</button>
+                </div>
+            </div>
+            <div id="players">
+                <div id="player-1" class="bloc-perso">
+                    <h2 class="title-perso">Donald Trump</h2>
+                    <div class="characteristics">
+                    </div>
+                </div>
+                <div id="player-2" class="bloc-perso">
+                    <h2 class="title-perso">Extraterrestre</h2>
+                    <div class="characteristics">
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        
+        <footer class="footer-grid footer-game--2d" role="contentinfo">
+            <div class="bloc-dark--blue"></div>
+            <div class="bloc-sky--blue">
+                <p>Conception & réalisation : Charlie Schmitt</p>
+            </div>
+        </footer>
+        
+        <script src="js/librairies/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+        <script src="js/jeu-2d/components/settings.js"></script>
+        <script src="js/jeu-2d/components/rules.js"></script>
+        <script src="js/jeu-2d/components/Board.js"></script>
+        <script src="js/jeu-2d/components/FightGame.js"></script>
+        <script src="js/jeu-2d/components/Element.js"></script>        
+        <script src="js/jeu-2d/components/Player.js"></script>
+        <script src="js/jeu-2d/components/Weapon.js"></script>
+        <script src="js/jeu-2d/components/Cell.js"></script>
+        <script src="js/jeu-2d/controllers/application.js"></script>
+        
+    </body>
+    </html>
