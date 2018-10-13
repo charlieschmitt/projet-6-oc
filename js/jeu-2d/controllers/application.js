@@ -1,13 +1,10 @@
 /*** Initialisation des cellules ***/
 const CELL = new Cell()
 
-/*** Création du board ***/
-
-// Initialisation du board, création de la grille et mise en place murs
+/*** Initialisation du board, création de la grille et mise en place murs ***/
 const BOARD = new Board(CELL)
 
 /*** Initialisation des armes ***/
-
 // Arme initiale
 const SLINGSHOT = new Weapon('Slingshot', 10, 'slingshot')
 // Pistolet laser
@@ -20,19 +17,19 @@ const SWISS_KNIFE = new Weapon('Swiss knife', 5, 'swiss-knife')
 const TASER = new Weapon('Taser', 15, 'taser')
 
 /*** Initialisation des joueurs ***/
-
 // Donald Trump
 const DONALD_TRUMP = new Player('Donald Trump', 100, SLINGSHOT, SLINGSHOT.damages, SLINGSHOT.name, 'donald-trump')
-
 // Extraterrestre
 const EXTRATERRESTRIAL = new Player('Extraterrestrial', 100, SLINGSHOT, SLINGSHOT.damages, SLINGSHOT.name, 'extraterrestrial')
 
 // Insertion des joueurs et des armes dans des tableaux, puis dans la grille, gestion des collisions
 BOARD.insertingElementsInTables(DONALD_TRUMP, EXTRATERRESTRIAL, LASER_GUN, LASER_SUBMACHINE_GUN, SWISS_KNIFE, TASER)
 // Mise en place des cellules accessibles dans la grille
-BOARD.determinationOfAccessibleCells(DONALD_TRUMP)
+//BOARD.determinationOfAccessibleCells(DONALD_TRUMP)
 // Suppression des cellules accessibles dans la grille
-BOARD.deleteAccessibleCells(DONALD_TRUMP)
+//BOARD.deleteAccessibleCells(DONALD_TRUMP)
 
-
-
+/*** Initialisation du jeu ***/
+const GAME = new Game(BOARD, DONALD_TRUMP, EXTRATERRESTRIAL)
+GAME.accessibleCells()
+GAME.nextTurn()
