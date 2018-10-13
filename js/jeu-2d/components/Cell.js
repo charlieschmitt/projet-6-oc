@@ -7,6 +7,8 @@ class Cell {
     constructor() {
         // Tab contenant les murs
         this.isWall = new Array()
+        // Prop contenant une cellule hors map
+        this.isOffMap = null
         // Tab contenant les joueurs
         this.isPlayer = new Array()
         // Tab contenant les armes
@@ -15,7 +17,9 @@ class Cell {
         this.PlayerAndWeapon = new Array()
         // Tab contenant les cellules occupées
         this.occupiedCell = new Array()
-        // Tab contenant les cellules accessiblesvfd
+        // Prop contenant une cellule accessible
+        this.isAccessible = ''
+        // Prop contenant les cellules accessibles 
         this.accessibleCell = new Array()
     }
     
