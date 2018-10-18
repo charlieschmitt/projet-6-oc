@@ -109,7 +109,6 @@ class Board {
     // Regroupement des 4 méthodes définissant les cellules accessibles verticalement et horizontalement
     determinationOfAccessibleCells(currentPlayer) {
         this.determinationOfAccessibleCellsUp(currentPlayer), this.determinationOfAccessibleCellsDown(currentPlayer), this.determinationOfAccessibleCellsLeft(currentPlayer), this.determinationOfAccessibleCellsRight(currentPlayer)
-        //this.settingUpClickableCells(GAME)
     }
 
     // Détermination des cellules accessibles en haut
