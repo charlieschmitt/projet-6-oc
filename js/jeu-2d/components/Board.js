@@ -45,7 +45,7 @@ class Board {
         WALL.eltPosID.classList.remove('empty'), WALL.eltPosID.classList.add('wall')
         // Insertion des murs dans prop isWall
         // Insertion de la position "x + '-' + y" dans prop occupiedCell
-        CELL.isWall.push(WALL), CELL.occupiedCell.push(WALL.eltPos)
+        CELL.isWall.push(WALL), CELL.isOccupied.push(WALL.eltPos)
         this.index++
     }
     
@@ -55,7 +55,7 @@ class Board {
         CELL.isPlayer.push(p1, p2)
         CELL.isWeapon.push(w1, w2, w3, w4)
         // Fusion du tableau isPlayer avec isWeapon
-        CELL.PlayerAndWeapon = CELL.isPlayer.concat(CELL.isWeapon)
+        CELL.isPlayerAndWeapon = CELL.isPlayer.concat(CELL.isWeapon)
         
         return this.placeElements(p1, p2)
         
@@ -67,19 +67,19 @@ class Board {
         this.checkingPositionBetweenPlayers(p1, p2)
         
         // Parcours des joueurs et armes à insérer
-        for(let i = 0; i < CELL.PlayerAndWeapon.length; i++){
+        for(let i = 0; i < CELL.isPlayerAndWeapon.length; i++){
             // Parcours de toutes les positions des cases occupées
             // On teste chaque arme / joueur par rapport aux cases occupées
-            for(this.index = 0; this.index < CELL.occupiedCell.length; this.index++){
+            for(this.index = 0; this.index < CELL.isOccupied.length; this.index++){
                 // On teste la position de chaque élément en appellant la méthode compareElements()
-                CELL.PlayerAndWeapon[i] = this.compareElements(CELL.PlayerAndWeapon[i], CELL.occupiedCell[this.index])
+                CELL.isPlayerAndWeapon[i] = this.compareElements(CELL.isPlayerAndWeapon[i], CELL.isOccupied[this.index])
                 // Si jamais la position du joueur 2 est différente d'un élément du tableau, rappeller la méthode permet d'éviter les erreurs entre le p1 et p2
                 this.checkingPositionBetweenPlayers(p1, p2)
             }
             // Stockage des positions des éléments dans la propriété occupiedCell
-            CELL.occupiedCell.push(CELL.PlayerAndWeapon[i].eltPos)
+            CELL.isOccupied.push(CELL.isPlayerAndWeapon[i].eltPos)
             // Si c'est ok, on place l'élément dans la grille
-            CELL.PlayerAndWeapon[i].placeElts()
+            CELL.isPlayerAndWeapon[i].placeElts()
         }
         
     }
@@ -109,6 +109,7 @@ class Board {
     // Regroupement des 4 méthodes définissant les cellules accessibles verticalement et horizontalement
     determinationOfAccessibleCells(currentPlayer) {
         this.determinationOfAccessibleCellsUp(currentPlayer), this.determinationOfAccessibleCellsDown(currentPlayer), this.determinationOfAccessibleCellsLeft(currentPlayer), this.determinationOfAccessibleCellsRight(currentPlayer)
+        //this.settingUpClickableCells(GAME)
     }
 
     // Détermination des cellules accessibles en haut
@@ -153,9 +154,9 @@ class Board {
     
     // Vérification si la cellule est ok, si elle est bien disponible
     checkingIfCellIsOk() {
-            if((CELL.isAccessible !== CELL.isOffMap) && (CELL.isAccessible.className !== CELL.isWall[0].eltPosID.className) && (CELL.isAccessible !== CELL.isPlayer[0].eltPosID.className) && (CELL.isAccessible !== CELL.isPlayer[0].eltPosID.className)){
+            if((CELL.isAccessible !== CELL.isOffMap) && (CELL.isAccessible.className !== CELL.isWall[0].eltPosID.className) && (CELL.isAccessible.className !== CELL.isPlayer[0].eltPosID.className) && (CELL.isAccessible.className !== CELL.isPlayer[1].eltPosID.className)){
             CELL.isAccessible.classList.add('accessible')
-            CELL.accessibleCell.push(CELL.isAccessible)
+            CELL.accessibleCells.push(CELL.isAccessible)
         }
         else{
             // Si la cellule n'est pas disponible, passage de la prop index à 10, pour sortir de la boucle for
@@ -166,10 +167,13 @@ class Board {
     // Suppresion des cellules accessibles verticalement et horizontalement
     deleteAccessibleCells(currentPlayer) {
         
+        // Suppression de tous les events dans la grille
+        $('div.cell.empty.accessible').unbind('click')
+        //CELL.accessibleCells.forEach(cellIsClicked => cellIsClicked.removeEventListener('click', fightGame, true))
         // Suppression de toutes les class accessibles dans la grille
-        CELL.accessibleCell.forEach(cell => cell.classList.remove('accessible'))
+        CELL.accessibleCells.forEach(cell => cell.classList.remove('accessible'))
         // Suppression des cellules accessibles dans le tab
-        CELL.accessibleCell.splice(0, CELL.accessibleCell.length)
+        CELL.accessibleCells.splice(0, CELL.accessibleCells.length)
         // Suppresion des positions de déplacement dans les tabs
         for(let prop in currentPlayer.moveOK){
             currentPlayer.moveOK[prop].splice(0, currentPlayer.moveOK[prop].length)
