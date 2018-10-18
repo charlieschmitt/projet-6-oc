@@ -1767,7 +1767,7 @@ ul.is-unstyled, ul.unstyled {
 
 body {
   background-color: #ffffff;
-  margin: 2rem 3rem 1.5rem;
+  margin: 1rem 3rem 1.5rem;
 }
 
 header {
@@ -1980,7 +1980,7 @@ h2 {
 /* Main */
 #page-game--2d {
   display: grid;
-  margin: 7rem auto 0;
+  margin: 3rem auto 0;
   grid-template-columns: 20% 80%;
 }
 
@@ -2076,7 +2076,6 @@ body.full-screen {
 
 .rules-page--content {
   transform: translateY(-100%);
-  transition: cubic-bezier(0.61, -0.19, 0.7, -0.11);
   transition-duration: 1.5s;
   position: absolute;
   left: 0;
@@ -2152,13 +2151,13 @@ body.full-screen {
 }
 
 #container .row .accessible {
-  background-color: #f16c1b !important;
+  background-color: #f16c1b;
   transition: ease-in 0.5s;
   cursor: pointer;
 }
 
 #container .row .accessible:hover {
-  background-color: rgba(241, 108, 27, 0.5);
+  background-color: #063c76;
   transition: ease-in 0.5s;
 }
 
@@ -2233,6 +2232,78 @@ body.full-screen {
   cursor: pointer;
 }
 
+/* Fin du jeu */
+.show {
+  visibility: visible !important;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  max-width: 630px;
+  min-width: 320px;
+  height: auto;
+  z-index: 2000;
+  visibility: hidden;
+  background-color: #063c76;
+  backface-visibility: hidden;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.popup-content {
+  color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6% 10%;
+}
+
+.popup-content .winner {
+  font-size: 3rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
+}
+
+.popup-content #replay {
+  display: block;
+  margin: 0 auto;
+  font-size: 0.8em;
+  background-color: #115db0;
+  transition: ease-in 1s;
+  border: none;
+  color: #ffffff;
+  padding: 1rem 4rem;
+  cursor: pointer;
+}
+
+.popup-content #replay:hover {
+  background-color: #2182eb;
+  transition: ease-in 1s;
+}
+
+/* Effet blur */
+.show.blur-effect ~ header, .show.blur-effect ~ main, .show.blur-effect ~ footer {
+  filter: blur(5rem);
+  background-color: #f16c1b;
+}
+
+.blur-effect .popup-content {
+  transform: translateY(-5%);
+  opacity: 0;
+}
+
+.blur-effect .popup-content {
+  transition: all 0.3s;
+}
+
+.show.blur-effect .popup-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 /* Joueurs */
 .bloc-perso {
   position: relative;
@@ -2248,6 +2319,7 @@ body.full-screen {
   box-shadow: 0px 0px 20px 5px #000000;
   position: relative;
   z-index: 2;
+  transition: ease-in .5s;
 }
 
 .bloc-perso .characteristics {
@@ -2259,6 +2331,7 @@ body.full-screen {
   bottom: 2rem;
   z-index: 1;
   padding: 4rem 3rem;
+  transition: ease-in .5s;
 }
 
 .bloc-perso .characteristics p {
